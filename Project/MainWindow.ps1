@@ -712,16 +712,16 @@ $formMainWindowControlRegisterButton.add_Click( {
     $Transcript = "$((Get-Date).ToString('yyyy-MM-dd-HHmmss'))-AutopilotOOBE.log"
     Start-Transcript -Path (Join-Path "$env:SystemRoot\Temp" $Transcript) -ErrorAction Ignore
 
-    Write-Host -ForegroundColor Cyan "Install-Script Get-WindowsAutoPilotInfo"
+    Write-Host -ForegroundColor Cyan "Install-Script get-windowsautopilotinfocommunity"
     Start-Sleep -Seconds 3
-    Install-Script Get-WindowsAutoPilotInfo -Force -Verbose
+    Install-Script get-windowsautopilotinfocommunity -Force -Verbose
 
     Write-Host ($Params | Out-String)
-    Write-Host -ForegroundColor Cyan "Get-WindowsAutoPilotInfo @Params"
+    Write-Host -ForegroundColor Cyan "get-windowsautopilotinfocommunity @Params"
 
     Start-Sleep -Seconds 3
     $formMainWindow.Title = "AutopilotOOBE $ModuleVersion : Registering Device"
-    Get-WindowsAutoPilotInfo @Params
+    get-windowsautopilotinfocommunity @Params
     $formMainWindow.Title = "AutopilotOOBE $ModuleVersion : Restart Device"
 
     if ((Get-Process -Name powershell).MainWindowTitle -match 'Running') {
